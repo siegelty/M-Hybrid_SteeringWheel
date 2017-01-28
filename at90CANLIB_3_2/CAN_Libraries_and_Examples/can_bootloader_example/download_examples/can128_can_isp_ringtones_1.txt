@@ -1,0 +1,52 @@
+
+#---- Hardware Setup -----
+
+-device AT90CAN128
+-hardware PEAK
+-canbitrate 500 
+ 
+#
+-debug
+
+
+#----- Operation --------------
+-operation
+    ONFAIL Ignore
+    CANOPEN 0xFF
+
+    MEMORY FLASH
+    ERASE F
+
+    #----- Programming "can128_ringtones_1"
+    LOADBUFFER "can128_ringtones_1.hex"
+    PROGRAM
+    VERIFY
+
+    #----- Programming BSB
+    MEMORY 4
+    ADDRANGE 0x000 0x000
+    FILLBUFFER 0x00
+    PROGRAM
+    VERIFY    
+
+    #----- Programming the application start address
+    #----- Note: the word-address jump at reset vector of
+    #            "can128_ringtones_1" is 0x02c9 
+    MEMORY 4
+    ADDRANGE 0x008 0x008
+    FILLBUFFER 0x02
+    ADDRANGE 0x009 0x009
+    FILLBUFFER 0xc9
+    ADDRANGE 0x008 0x009
+    PROGRAM
+    VERIFY
+
+    
+        ECHO " "
+        ECHO "*** APPLICATION will start after this downloading."
+        ECHO "*** Hardware Condition + RESET will re-start BOOTLOADER. "
+        ECHO " "
+
+    START reset    0
+#    START noreset  0
+#    START noreset  0x02c9

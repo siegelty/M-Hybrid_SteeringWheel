@@ -1,0 +1,66 @@
+#------------------------------------------
+# CARE: BootLoader version >3
+#
+# This file contains all test regarding the 
+# Eeprom blankcheck.
+#----------------------------------------
+
+	MEMORY EEPROM
+
+        #----- EEPROM erase --------------
+           ECHO "   **3.1** Eeprom erase"
+	TIMEOUT 60
+	ERASE F
+
+        #----- EEPROM erase checking -----
+           ECHO "   **3.2** Eeprom erase checking"
+	BLANKCHECK
+
+        #----- EEPROM access --------------
+            ECHO "   **3.3.1** Eeprom 1byte; address 0x002 = 0x11"
+	ADDRANGE 0x002 0x002
+	FILLBUFFER 0x11
+	PROGRAM
+	ASSERT FAIL
+	BLANKCHECK
+	ASSERT PASS
+	TIMEOUT 60
+	ERASE F
+	BLANKCHECK
+	
+
+            ECHO "   **3.3.2** Eeprom 1byte; address 0x0FF = 0x22"
+	ADDRANGE 0x0FF 0x0FF
+	FILLBUFFER 0x22
+	PROGRAM
+	ASSERT FAIL
+	BLANKCHECK
+	ASSERT PASS
+	TIMEOUT 60
+	ERASE F
+	BLANKCHECK
+
+            ECHO "   **3.3.3** Eeprom 1byte; address 0x100 = 0x33"
+	ADDRANGE 0x100 0x100
+	FILLBUFFER 0x33
+	PROGRAM
+	ASSERT FAIL
+	BLANKCHECK
+	ASSERT PASS
+	TIMEOUT 60
+	ERASE F
+	BLANKCHECK
+
+            ECHO "   **3.3.3** Eeprom 1byte; address 0xFFF = 0x44"
+	ADDRANGE 0xFFF 0xFFF
+	FILLBUFFER 0x44
+	PROGRAM
+	ASSERT FAIL
+	BLANKCHECK
+	ASSERT PASS
+	TIMEOUT 60
+	ERASE F
+	BLANKCHECK
+
+# ******* End Of File *******
+        ECHO "   ** 3 ** E.O.F"

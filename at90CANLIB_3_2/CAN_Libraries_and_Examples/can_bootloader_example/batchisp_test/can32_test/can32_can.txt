@@ -1,0 +1,36 @@
+#---- Setup of the hardware -----
+-device AT90CAN32
+-hardware PEAK
+-canbitrate 500 
+
+-logf "can32_can_logfile.txt"
+
+#-debug
+
+
+#----- Operation --------------
+-operation
+    ONFAIL Ignore
+    CANOPEN 0xFF
+    
+    ECHO "   -1- Test=can32_tst-1_configurations.txt"
+    INCLUDE "can32_tst-1_configurations.txt"
+    
+    ECHO "   -2- Test=can32_tst-2_ssb.txt"
+    INCLUDE "can32_tst-2_ssb.txt"
+    
+    ECHO "   -3- Test=can32_tst-3_blankcheck_eeprom.txt"
+    INCLUDE "can32_tst-3_blankcheck_eeprom.txt"
+    
+    ECHO "   -4- Test=can32_tst-4_blankcheck_flash.txt"
+    INCLUDE "can32_tst-4_blankcheck_flash.txt"
+    
+    ECHO "   -5- Test=can32_tst-5_eeprom.txt"
+    INCLUDE "can32_tst-5_eeprom.txt"
+    
+    ECHO "   -6- Test=can32_tst-6_flash.txt"
+    INCLUDE "can32_tst-6_flash.txt"
+    
+    CANCLOSE 0xFF
+    ECHO " "
+    ECHO "   --- End of Test--- "

@@ -1,0 +1,66 @@
+#------------------------------------------
+# CARE: BootLoader version >3
+#
+# This file contains all test regarding the eeprom
+# access.
+#
+#----------------------------------------
+
+
+    MEMORY EEPROM
+
+    #----- EEPROM erase --------------
+        ECHO "   **5.1** Eeprom erase"
+    TIMEOUT 60
+    ERASE F
+   
+    #----- EEPROM access --------------
+        ECHO "   **5.2.1** Eeprom 1byte; address 0x000 = 0x11"
+    ADDRANGE 0x000 0x000
+    FILLBUFFER 0x11
+    PROGRAM
+    VERIFY
+
+    #----- EEPROM blank checking -----
+        ECHO "   **5.2.2** Eeprom blank checking; fail address = 0x000"
+    ADDRANGE 0x000 0x3FF
+    ASSERT FAIL
+    BLANKCHECK
+    ASSERT PASS  
+
+    #----- EEPROM erase & blank checking -----
+        ECHO "   **5.2.3** Eeprom erase & blank checking"
+    TIMEOUT 60
+    ERASE F
+    BLANKCHECK
+    
+
+    #----- EEPROM access --------------
+        ECHO "   **5.3** Eeprom 1byte; address 0x001 = 0x22"
+    ADDRANGE 0x001 0x001
+    FILLBUFFER 0x22
+    PROGRAM
+    VERIFY
+
+    #----- EEPROM access --------------
+        ECHO "   **5.4** Eeprom 1byte; address 0x002 = 0x33"
+    ADDRANGE 0x002 0x002
+    FILLBUFFER 0x33
+    PROGRAM
+    VERIFY
+
+    #----- EEPROM access --------------
+        ECHO "   **5.5** Eeprom 2Kbyte; address 0x000 up to 0x3FF = 0xAA"
+    ADDRANGE 0x000 0x3FF
+    FILLBUFFER 0xAA
+    TIMEOUT 180
+    PROGRAM
+    VERIFY
+
+    #----- EEPROM erase --------------
+        ECHO "   **5.6** Eeprom erase"
+    TIMEOUT 60
+    ERASE F
+   
+# ******* End Of File *******
+        ECHO "   ** 5 ** E.O.F"

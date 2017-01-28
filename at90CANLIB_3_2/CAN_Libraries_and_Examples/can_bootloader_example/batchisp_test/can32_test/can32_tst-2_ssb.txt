@@ -1,0 +1,225 @@
+#------------------------------------------
+# CARE: BootLoader version >3
+#
+# This file contains all test regarding the 
+# Software Security Byte.
+#
+#----------------------------------------
+
+
+        #----- FLASH access --------------
+    MEMORY FLASH
+    ERASE F
+        ECHO "   **2.1.1** Flash 1byte; address 0x002 = 0x33"
+    ADDRANGE 0x002 0x002
+    FILLBUFFER 0x33
+    PROGRAM
+    VERIFY
+    ERASE F
+
+        #----- EEPROM access --------------
+    MEMORY EEPROM
+    TIMEOUT 60
+    ERASE F
+        ECHO "   **2.1.2** Eeprom 1byte; address 0x002 = 0x44"
+    ADDRANGE 0x002 0x002
+    FILLBUFFER 0x44
+    PROGRAM
+    VERIFY
+    TIMEOUT 60
+    ERASE F
+
+        #----- Configuration access --------------
+    MEMORY 4
+        ECHO "   **2.1.3** EB = 0xFF"
+    ADDRANGE 0x002 0x002
+    FILLBUFFER 0xFF
+    PROGRAM
+    VERIFY
+
+
+
+# SSB : Write protected
+#-----------------------
+        ECHO "   **2.2.1** Set SSB: Write protected"
+    ADDRANGE 0x01 0x01
+    FILLBUFFER 0xFE
+    PROGRAM
+    VERIFY
+
+        #----- FLASH access --------------
+    MEMORY FLASH
+    ADDRANGE 0 0x05FFF
+    BLANKCHECK
+        ECHO "   **2.2.2** Flash 1byte; address 0x001 = 0x11"
+    ADDRANGE 0x001 0x001
+    FILLBUFFER 0x11
+    ASSERT FAIL
+    PROGRAM
+    ASSERT PASS
+    FILLBUFFER 0xFF
+    VERIFY
+
+        #----- EEPROM access --------------
+    MEMORY EEPROM
+    ADDRANGE 0 0x3FF
+    BLANKCHECK
+        ECHO "   **2.2.3** Eeprom 1byte; address 0x001 = 0x22"
+    ADDRANGE 0x001 0x001
+    FILLBUFFER 0x22
+    ASSERT FAIL
+    PROGRAM
+    ASSERT PASS
+    FILLBUFFER 0xFF
+    VERIFY
+
+        #----- Signature access --------------
+    MEMORY 2
+        ECHO "   **2.2.4** Manufacturer code, Family Code, Product Name & Product Revision"
+    ADDRANGE 0x00 0x03
+    READ
+
+        #----- Information access --------------
+    MEMORY 3
+        ECHO "   **2.2.5** Bootloader version + IDs"
+    ADDRANGE 0x00 0x02
+    READ
+
+        #----- Configuration access --------------
+    MEMORY 4
+        ECHO "   **2.2.6** EB = 0x33"
+    ADDRANGE 0x002 0x002
+    FILLBUFFER 0x33
+    ASSERT FAIL
+    PROGRAM
+    ASSERT PASS
+    FILLBUFFER 0xFF
+    VERIFY
+
+        #----- Device Registers --------------
+    MEMORY 5
+        ECHO "   **2.2.7** Stack Register (double)"
+    ADDRANGE 0x5D 0x5E
+    READ
+
+
+
+# SSB : Read Write protected
+#---------------------------
+    MEMORY 4
+        ECHO "   **2.3.1** SSB=Read_Write protection"
+    ADDRANGE 0x001 0x001
+    FILLBUFFER 0xFC
+    PROGRAM
+        
+        #----- FLASH access --------------
+    MEMORY FLASH
+    ADDRANGE 0 0x05FFF
+    BLANKCHECK
+        ECHO "   **2.3.2** Flash 1byte; address 0x001 = 0x44"
+    ADDRANGE 0x001 0x001
+    FILLBUFFER 0x44
+    ASSERT FAIL
+    PROGRAM
+    READ
+    ASSERT PASS
+
+        #----- EEPROM access --------------
+    MEMORY EEPROM
+    ADDRANGE 0 0x3FF
+    BLANKCHECK
+        ECHO "   **2.3.3** Eeprom 1byte; address 0x001 = 0x55"
+    ADDRANGE 0x001 0x001
+    FILLBUFFER 0x55
+    ASSERT FAIL
+    PROGRAM
+    READ
+    ASSERT PASS
+
+        #----- Signature access --------------
+    MEMORY 2
+        ECHO "   **2.3.4** Manufacturer code, Family Code, Product Name & Product Revision"
+    ADDRANGE 0x00 0x03
+    READ
+
+        #----- Information access --------------
+    MEMORY 3
+        ECHO "   **2.3.5** Bootloader version + IDs"
+    ADDRANGE 0x00 0x02
+    READ
+
+        #----- Configuration access --------------
+    MEMORY 4
+        ECHO "   **2.3.6** EB = 0x66"
+    ADDRANGE 0x002 0x002
+    FILLBUFFER 0x66
+    ASSERT FAIL
+    PROGRAM
+    ASSERT PASS
+    FILLBUFFER 0xFF
+    VERIFY
+
+        #----- Device Registers --------------
+    MEMORY 5
+        ECHO "   **2.3.7** Stack Register (double)"
+    ADDRANGE 0x5D 0x5E
+    READ
+
+
+# SSB : No security
+#------------------
+	MEMORY 4
+        ECHO "   **2.4.1** SSB = TRY No-security"
+    ADDRANGE 0x001 0x001
+    READ 
+    FILLBUFFER 0xFE
+    ASSERT FAIL
+    PROGRAM
+    VERIFY
+    ASSERT PASS
+
+        #----- FLASH access --------------
+    MEMORY FLASH
+        ECHO "   **2.4.2** Erase Flash and SSB"
+    ERASE F
+    ADDRANGE 0 0x05FFF
+    BLANKCHECK
+
+        #----- FLASH erase clears SSB --------------
+        #----- Configuration access --------------
+    MEMORY 4
+        ECHO "   **2.4.3** Verify SSB = 0xFF"
+    ADDRANGE 0x001 0x001
+    FILLBUFFER 0xFF
+    VERIFY
+
+        #----- Check Flash Write --------------
+    MEMORY FLASH
+        ECHO "   **2.4.4** Flash 1byte; address 0x001 = 0x77"
+        ADDRANGE 0x001 0x001
+        FILLBUFFER 0x77
+    PROGRAM
+    VERIFY
+    ERASE F
+
+        #----- Check Eeprom Write --------------
+    MEMORY EEPROM
+        ECHO "   **2.4.5** Eeprom 1byte; address 0x001 = 0x88"
+    ADDRANGE 0x001 0x001
+    FILLBUFFER 0x88
+    PROGRAM
+    VERIFY
+    TIMEOUT 60
+    ERASE F
+
+        #----- Configuration access --------------
+    MEMORY 4
+        ECHO "   **2.4.6** EB = 0x99"
+    ADDRANGE 0x002 0x002
+    FILLBUFFER 0x99
+    PROGRAM
+    VERIFY
+    ERASE F
+
+# ******* End Of File *******
+        ECHO "   ** 2 ** E.O.F"

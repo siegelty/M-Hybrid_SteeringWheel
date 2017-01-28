@@ -1,0 +1,293 @@
+#------------------------------------------
+# CARE: BootLoader version >3
+#
+# This file contains all test regarding the flash
+# access.
+#
+#----------------------------------------
+
+    MEMORY FLASH
+
+    #----- FLASH erase --------------
+        ECHO "   **6.1** Flash erase"
+    ERASE F
+
+
+    #----- 1 byte access --------------
+    #----- FLASH access --------------
+        ECHO "   **6.2.1** Flash 1byte; address 0x000 = 0x11"
+    ADDRANGE 0x000 0x000
+    FILLBUFFER 0x11
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.2.2** Flash 1byte; address 0x001 = 0x22"
+    ADDRANGE 0x001 0x001
+    FILLBUFFER 0x22
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.2.3** Flash 1byte; address 0x002 = 0x33"
+    ADDRANGE 0x002 0x002
+    FILLBUFFER 0x33
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.2.4** Flash 1byte; address 0x0FE = 0x44"
+    ADDRANGE 0x0FE 0x0FE
+    FILLBUFFER 0x44
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.2.5** Flash 1byte; address 0x0FF = 0x55"
+    ADDRANGE 0x0FF 0x0FF
+    FILLBUFFER 0x55
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.2.6** Flash 1byte; address 0x0100 = 0x66"
+    ADDRANGE 0x100 0x100
+    FILLBUFFER 0x66
+    PROGRAM
+    VERIFY
+
+
+    #----- 3 bytes access --------------
+    #----- FLASH access --------------
+        ECHO "   **6.3.1** Flash 3bytes; address 0x000-0x002 = 0x77"
+    ADDRANGE 0x000 0x002
+    FILLBUFFER 0x77
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.2** Flash 3bytes; address 0x001-0x003 = 0x88"
+    ADDRANGE 0x001 0x003
+    FILLBUFFER 0x88
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.3** Flash 3bytes; address 0x002-0x004 = 0x99"
+    ADDRANGE 0x002 0x004
+    FILLBUFFER 0x99
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.4** Flash 3bytes; address 0x003-0x005 = 0xAA"
+    ADDRANGE 0x003 0x005
+    FILLBUFFER 0xAA
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.5** Flash 3bytes; address 0x0FA-0x0FC = 0xBB"
+    ADDRANGE 0x0FA 0x0FC
+    FILLBUFFER 0xBB
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.6** Flash 3bytes; address 0x0FB-0x0FD = 0xCC"
+    ADDRANGE 0x0FB 0x0FD
+    FILLBUFFER 0xCC
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.7** Flash 3bytes; address 0x0FC-0x0FE = 0xDD"
+    ADDRANGE 0x0FC 0x0FE
+    FILLBUFFER 0xDD
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.8** Flash 3bytes; address 0x0FD-0x0FF = 0xEE"
+    ADDRANGE 0x0FD 0x0FF
+    FILLBUFFER 0xEE
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.9** Flash 3bytes; address 0x0FE-0x0100 = 0x00"
+    ADDRANGE 0x0FE 0x100
+    FILLBUFFER 0x00
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.10** Flash 3bytes; address 0x0FF-0x0101 = 0x12"
+    ADDRANGE 0x0FF 0x101
+    FILLBUFFER 0x12
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.3.11** Flash 3bytes; address 0x0100-0x0102 = 0x23"
+    ADDRANGE 0x100 0x102
+    FILLBUFFER 0x23
+    PROGRAM
+    VERIFY
+
+
+
+    #----- FLASH erase --------------
+        ECHO "   **6.4** Flash erase"
+    ERASE F
+
+
+
+    #----- 16 bytes access --------------
+    #----- FLASH access --------------
+        ECHO "   **6.5.1** Flash 16bytes; address 0x000-0x00F = 0x11"
+    ADDRANGE 0x00 0x0F
+    FILLBUFFER 0x11
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.5.2** Flash 16bytes; address 0x0FF-0x010E = 0x22"
+    ADDRANGE 0xFF 0x10E
+    FILLBUFFER 0x22
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.5.3** Flash 16bytes; address 0x0100-0x010F = 0x33"
+    ADDRANGE 0x100 0x10F
+    FILLBUFFER 0x33
+    PROGRAM
+    VERIFY
+
+
+
+
+    #----- FLASH erase --------------
+        ECHO "   **6.6** Flash erase"
+    ERASE F
+
+
+
+    #----- 1 page access --------------
+    #----- FLASH access --------------
+        ECHO "   **6.7.1** Flash 1page; address 0x000-0x0FF = 0x11"
+    ADDRANGE 0x00 0xFF
+    FILLBUFFER 0x11
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.2** Flash 1page; address 0x080-0x017F = 0x12"
+    ADDRANGE 0x80 0x17F
+    FILLBUFFER 0x12
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.3** Flash 1page-1; address 0x001-0x0FF = 0x22"
+    ADDRANGE 0x01 0xFF
+    FILLBUFFER 0x22
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.4** Flash 1page-1; address 0x000-0x0FE = 0xAA"
+    ADDRANGE 0x00 0xFE
+    FILLBUFFER 0xAA
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.5** Flash 1page-2; address 0x002-0x0FF = 0x33"
+    ADDRANGE 0x02 0xFF
+    FILLBUFFER 0x33
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.6** Flash 1page-2; address 0x000-0x0FD = 0xBB"
+    ADDRANGE 0x00 0xFD
+    FILLBUFFER 0xBB
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.7** Flash 1page-3; address 0x003-0x0FF = 0x44"
+    ADDRANGE 0x03 0xFF
+    FILLBUFFER 0x44
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.8** Flash 1page-3; address 0x000-0x0FC = 0xCC"
+    ADDRANGE 0x00 0xFC
+    FILLBUFFER 0xCC
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.9** Flash 1page+1; address 0x000-0x0100 = 0x01"
+    ADDRANGE 0x00 0x100
+    FILLBUFFER 0x01
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.10** Flash 1page+2; address 0x000-0x0101 = 0x23"
+    ADDRANGE 0x00 0x101
+    FILLBUFFER 0x23
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.11** Flash 1page+3; address 0x000-0x0102 = 0x45"
+    ADDRANGE 0x00 0x102
+    FILLBUFFER 0x45
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.12** Flash 1page+1; address 0x001-0x0100 = 0xAB"
+    ADDRANGE 0x01 0x100
+    FILLBUFFER 0xAB
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.13** Flash 1page+2; address 0x001-0x0101 = 0xCD"
+    ADDRANGE 0x01 0x101
+    FILLBUFFER 0xCD
+    PROGRAM
+    VERIFY
+
+    #----- FLASH access --------------
+        ECHO "   **6.7.13** Flash 1page+3; address 0x001-0x0102 = 0xEF"
+    ADDRANGE 0x01 0x102
+    FILLBUFFER 0xEF
+    PROGRAM
+    VERIFY
+
+
+
+    #----- Full access --------------
+    #----- FLASH access --------------
+        ECHO "   **6.8** Flash 24kbytes; address 0x000-0x1DFFF = 0xAA"
+    ADDRANGE 0x000 0x1DFFF
+    FILLBUFFER 0xAA
+    PROGRAM
+    VERIFY
+
+
+    #----- FLASH erase --------------
+        ECHO "   **6.9** Flash erase"
+    ERASE F
+
+
+# ******* End Of File *******
+        ECHO "   ** 6 ** E.O.F"

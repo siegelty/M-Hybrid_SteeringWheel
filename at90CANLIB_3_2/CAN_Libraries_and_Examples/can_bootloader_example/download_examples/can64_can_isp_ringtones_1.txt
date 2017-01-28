@@ -1,0 +1,35 @@
+
+#---- Hardware Setup -----
+
+-device AT90CAN64
+-hardware PEAK
+-canbitrate 500 
+ 
+#-debug
+
+
+#----- Operation --------------
+-operation
+    ONFAIL Ignore
+    CANOPEN 0xFF
+
+    MEMORY FLASH
+    ERASE F
+
+    LOADBUFFER "can64_ringtones_1.hex"
+    PROGRAM
+    VERIFY
+
+    MEMORY 4
+    ADDRANGE 0x000 0x000
+    FILLBUFFER 0x00
+    PROGRAM
+    VERIFY
+    
+        ECHO " "
+        ECHO "*** APPLICATION will start after this downloading."
+        ECHO "*** Hardware Condition + RESET will re-start BOOTLOADER. "
+        ECHO " "
+
+    START noreset 00
+    CANCLOSE 0xFF

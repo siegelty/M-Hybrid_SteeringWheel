@@ -1,0 +1,621 @@
+Running batchisp 0.1.0.10 on Thu Apr 12 15:06:40 2007
+
+
+
+AT90CAN64 - PEAK - 500Kbit
+
+
+Device selection....................... PASS 
+Hardware selection..................... PASS 
+Opening port........................... PASS 
+Opening CAN Node....................... PASS	0xff	0x00
+Reading Bootloader version............. PASS	1.0.4
+ -1- Test=can64_tst-1_configurations.txt
+Selecting Memory....................... PASS 
+Erasing................................ PASS 
+Setting Address Range.................. PASS	0x00000	0x00000
+ **1.1.1** Write BSB = 0x55
+Filling buffer......................... PASS	0x00000	0x00000	0x55
+Programming memory..................... PASS	0x00000	0x00000
+ *** Verify BSB
+Verifying memory....................... PASS	0x00000	0x00000
+Setting Address Range.................. PASS	0x00002	0x00002
+ **1.1.2** Write EB = 0xAA
+Filling buffer......................... PASS	0x00002	0x00002	0xAA
+Programming memory..................... PASS	0x00002	0x00002
+ *** Verify EB
+Verifying memory....................... PASS	0x00002	0x00002
+Setting Address Range.................. PASS	0x00003	0x00003
+ **1.1.3** Write CANBT1 = 0x11
+Filling buffer......................... PASS	0x00003	0x00003	0x11
+Programming memory..................... PASS	0x00003	0x00003
+ *** Verify CANBT1
+Verifying memory....................... PASS	0x00003	0x00003
+Setting Address Range.................. PASS	0x00004	0x00004
+ **1.1.4** Write CANBT2 = 0x22
+Filling buffer......................... PASS	0x00004	0x00004	0x22
+Programming memory..................... PASS	0x00004	0x00004
+ *** Verify CANBT2
+Verifying memory....................... PASS	0x00004	0x00004
+Setting Address Range.................. PASS	0x00005	0x00005
+ **1.1.5** Write CANBT3 = 0x33
+Filling buffer......................... PASS	0x00005	0x00005	0x33
+Programming memory..................... PASS	0x00005	0x00005
+ *** Verify CANBT3
+Verifying memory....................... PASS	0x00005	0x00005
+Setting Address Range.................. PASS	0x00006	0x00006
+ **1.1.6** Write NNB = 0x44
+Filling buffer......................... PASS	0x00006	0x00006	0x44
+Programming memory..................... PASS	0x00006	0x00006
+ *** Verify NNB
+Verifying memory....................... PASS	0x00006	0x00006
+Setting Address Range.................. PASS	0x00007	0x00007
+ **1.1.7** Write CRIS = 0x55
+Filling buffer......................... PASS	0x00007	0x00007	0x55
+Programming memory..................... PASS	0x00007	0x00007
+ *** Verify CRIS
+Verifying memory....................... PASS	0x00007	0x00007
+Setting Address Range.................. PASS	0x00008	0x00008
+ **1.1.8** Write SA_H = 0x66
+Filling buffer......................... PASS	0x00008	0x00008	0x66
+Programming memory..................... PASS	0x00008	0x00008
+ *** Verify SA_H
+Verifying memory....................... PASS	0x00008	0x00008
+Setting Address Range.................. PASS	0x00009	0x00009
+ **1.1.9** Write SA_L = 0x77
+Filling buffer......................... PASS	0x00009	0x00009	0x77
+Programming memory..................... PASS	0x00009	0x00009
+ *** Verify SA_L
+Verifying memory....................... PASS	0x00009	0x00009
+Setting Address Range.................. PASS	0x00001	0x00001
+ **1.1.10** Write SSB = 0xFC
+Filling buffer......................... PASS	0x00001	0x00001	0xFC
+Programming memory..................... PASS	0x00001	0x00001
+ *** Verify SSB
+Verifying memory....................... PASS	0x00001	0x00001
+Selecting FLASH........................ PASS 
+Erasing................................ PASS 
+ **1.2** Flash erase also erases SSB
+Selecting Memory....................... PASS 
+Setting Address Range.................. PASS	0x00001	0x00001
+ **1.2.1** Verify SSB after Flash erase =? 0xFF
+Filling buffer......................... PASS	0x00001	0x00001	0xFF
+Verifying memory....................... PASS	0x00001	0x00001
+Setting Address Range.................. PASS	0x00000	0x00000
+ **1.2.2.1** Read BSB =? 0x55
+Filling buffer......................... PASS	0x00000	0x00000	0x55
+Verifying memory....................... PASS	0x00000	0x00000
+ **1.2.2.2** Write BSB = 0xFF
+Filling buffer......................... PASS	0x00000	0x00000	0xFF
+Programming memory..................... PASS	0x00000	0x00000
+Verifying memory....................... PASS	0x00000	0x00000
+Setting Address Range.................. PASS	0x00002	0x00002
+ **1.2.3.1** Read EB =? 0xAA
+Filling buffer......................... PASS	0x00002	0x00002	0xAA
+Verifying memory....................... PASS	0x00002	0x00002
+ **1.2.3.2** Write EB = 0xFF
+Filling buffer......................... PASS	0x00002	0x00002	0xFF
+Programming memory..................... PASS	0x00002	0x00002
+Verifying memory....................... PASS	0x00002	0x00002
+Setting Address Range.................. PASS	0x00003	0x00003
+ **1.2.4.1** Read CANBT1 =? 0x11
+Filling buffer......................... PASS	0x00003	0x00003	0x11
+Verifying memory....................... PASS	0x00003	0x00003
+ **1.2.4.2** Write CANBT1 = 0xFF
+Filling buffer......................... PASS	0x00003	0x00003	0xFF
+Programming memory..................... PASS	0x00003	0x00003
+Verifying memory....................... PASS	0x00003	0x00003
+Setting Address Range.................. PASS	0x00004	0x00004
+ **1.2.5.1** Read CANBT2 =? 0x22
+Filling buffer......................... PASS	0x00004	0x00004	0x22
+Verifying memory....................... PASS	0x00004	0x00004
+ **1.2.5.2** Write CANBT2 = 0xFF
+Filling buffer......................... PASS	0x00004	0x00004	0xFF
+Programming memory..................... PASS	0x00004	0x00004
+Verifying memory....................... PASS	0x00004	0x00004
+Setting Address Range.................. PASS	0x00005	0x00005
+ **1.2.6.1** Read CANBT3 =? 0x33
+Filling buffer......................... PASS	0x00005	0x00005	0x33
+Verifying memory....................... PASS	0x00005	0x00005
+ **1.2.6.2** Write CANBT3 = 0xFF
+Filling buffer......................... PASS	0x00005	0x00005	0xFF
+Programming memory..................... PASS	0x00005	0x00005
+Verifying memory....................... PASS	0x00005	0x00005
+Setting Address Range.................. PASS	0x00006	0x00006
+ **1.2.7.1** Read NNB =? 0x44
+Filling buffer......................... PASS	0x00006	0x00006	0x44
+Verifying memory....................... PASS	0x00006	0x00006
+ **1.2.7.2** Write NNB = 0xFF
+Filling buffer......................... PASS	0x00006	0x00006	0xFF
+Programming memory..................... PASS	0x00006	0x00006
+Verifying memory....................... PASS	0x00006	0x00006
+Setting Address Range.................. PASS	0x00007	0x00007
+ **1.2.8.1** Read CRIS =? 0x55
+Filling buffer......................... PASS	0x00007	0x00007	0x55
+Verifying memory....................... PASS	0x00007	0x00007
+ **1.2.8.2** Write CRIS = 0x00
+Filling buffer......................... PASS	0x00007	0x00007	0x00
+Programming memory..................... PASS	0x00007	0x00007
+Verifying memory....................... PASS	0x00007	0x00007
+Setting Address Range.................. PASS	0x00008	0x00008
+ **1.2.9.1** Read SA_H =? 0x66
+Filling buffer......................... PASS	0x00008	0x00008	0x66
+Verifying memory....................... PASS	0x00008	0x00008
+ **1.2.9.2** Write SA_H = 0x00
+Filling buffer......................... PASS	0x00008	0x00008	0x00
+Programming memory..................... PASS	0x00008	0x00008
+Verifying memory....................... PASS	0x00008	0x00008
+Setting Address Range.................. PASS	0x00009	0x00009
+ **1.2.10.1** Read SA_L =? 0x77
+Filling buffer......................... PASS	0x00009	0x00009	0x77
+Verifying memory....................... PASS	0x00009	0x00009
+ **1.2.10.2** Write SA_L = 0x00
+Filling buffer......................... PASS	0x00009	0x00009	0x00
+Programming memory..................... PASS	0x00009	0x00009
+Verifying memory....................... PASS	0x00009	0x00009
+ ** 1 ** E.O.F
+ -2- Test=can64_tst-2_ssb.txt
+Selecting FLASH........................ PASS 
+Erasing................................ PASS 
+ **2.1.1** Flash 1byte; address 0x002 = 0x33
+Setting Address Range.................. PASS	0x00002	0x00002
+Filling buffer......................... PASS	0x00002	0x00002	0x33
+Programming memory..................... PASS	0x00002	0x00002
+Verifying memory....................... PASS	0x00002	0x00002
+Erasing................................ PASS 
+Selecting EEPROM....................... PASS 
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+ **2.1.2** Eeprom 1byte; address 0x002 = 0x44
+Setting Address Range.................. PASS	0x00002	0x00002
+Filling buffer......................... PASS	0x00002	0x00002	0x44
+Programming memory..................... PASS	0x00002	0x00002
+Verifying memory....................... PASS	0x00002	0x00002
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+Selecting Memory....................... PASS 
+ **2.1.3** EB = 0xFF
+Setting Address Range.................. PASS	0x00002	0x00002
+Filling buffer......................... PASS	0x00002	0x00002	0xFF
+Programming memory..................... PASS	0x00002	0x00002
+Verifying memory....................... PASS	0x00002	0x00002
+ **2.2.1** Set SSB: Write protected
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0xFE
+Programming memory..................... PASS	0x00001	0x00001
+Verifying memory....................... PASS	0x00001	0x00001
+Selecting FLASH........................ PASS 
+Setting Address Range.................. PASS	0x00000	0x0dfff
+Blank checking......................... PASS	0x00000	0x0dfff
+ **2.2.2** Flash 1byte; address 0x001 = 0x11
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0x11
+Programming memory..................... PASS*	Device protection is set.
+Filling buffer......................... PASS	0x00001	0x00001	0xFF
+Verifying memory....................... PASS	0x00001	0x00001
+Selecting EEPROM....................... PASS 
+Setting Address Range.................. PASS	0x00000	0x007ff
+Blank checking......................... PASS	0x00000	0x007ff
+ **2.2.3** Eeprom 1byte; address 0x001 = 0x22
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0x22
+Programming memory..................... PASS*	Device protection is set.
+Filling buffer......................... PASS	0x00001	0x00001	0xFF
+Verifying memory....................... PASS	0x00001	0x00001
+Selecting Memory....................... PASS 
+ **2.2.4** Manufacturer code, Family Code, Product Name & Product Revision
+Setting Address Range.................. PASS	0x00000	0x00003
+Reading memory......................... PASS	0x00000	0x00003
+Selecting Memory....................... PASS 
+ **2.2.5** Bootloader version + IDs
+Setting Address Range.................. PASS	0x00000	0x00002
+Reading memory......................... PASS	0x00000	0x00002
+Selecting Memory....................... PASS 
+ **2.2.6** EB = 0x33
+Setting Address Range.................. PASS	0x00002	0x00002
+Filling buffer......................... PASS	0x00002	0x00002	0x33
+Programming memory..................... PASS*	Device protection is set.
+Filling buffer......................... PASS	0x00002	0x00002	0xFF
+Verifying memory....................... PASS	0x00002	0x00002
+Selecting Memory....................... PASS 
+ **2.2.7** Stack Register (double)
+Setting Address Range.................. PASS	0x0005d	0x0005e
+Reading memory......................... PASS	0x0005d	0x0005e
+Selecting Memory....................... PASS 
+ **2.3.1** SSB=Read_Write protection
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0xFC
+Programming memory..................... PASS	0x00001	0x00001
+Selecting FLASH........................ PASS 
+Setting Address Range.................. PASS	0x00000	0x0dfff
+Blank checking......................... PASS	0x00000	0x0dfff
+ **2.3.2** Flash 1byte; address 0x001 = 0x44
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0x44
+Programming memory..................... PASS*	Device protection is set.
+Reading memory......................... PASS*	Device protection is set.
+Selecting EEPROM....................... PASS 
+Setting Address Range.................. PASS	0x00000	0x007ff
+Blank checking......................... PASS	0x00000	0x007ff
+ **2.3.3** Eeprom 1byte; address 0x001 = 0x55
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0x55
+Programming memory..................... PASS*	Device protection is set.
+Reading memory......................... PASS*	Device protection is set.
+Selecting Memory....................... PASS 
+ **2.3.4** Manufacturer code, Family Code, Product Name & Product Revision
+Setting Address Range.................. PASS	0x00000	0x00003
+Reading memory......................... PASS	0x00000	0x00003
+Selecting Memory....................... PASS 
+ **2.3.5** Bootloader version + IDs
+Setting Address Range.................. PASS	0x00000	0x00002
+Reading memory......................... PASS	0x00000	0x00002
+Selecting Memory....................... PASS 
+ **2.3.6** EB = 0x66
+Setting Address Range.................. PASS	0x00002	0x00002
+Filling buffer......................... PASS	0x00002	0x00002	0x66
+Programming memory..................... PASS*	Device protection is set.
+Filling buffer......................... PASS	0x00002	0x00002	0xFF
+Verifying memory....................... PASS	0x00002	0x00002
+Selecting Memory....................... PASS 
+ **2.3.7** Stack Register (double)
+Setting Address Range.................. PASS	0x0005d	0x0005e
+Reading memory......................... PASS	0x0005d	0x0005e
+Selecting Memory....................... PASS 
+ **2.4.1** SSB = TRY No-security
+Setting Address Range.................. PASS	0x00001	0x00001
+Reading memory......................... PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0xFE
+Programming memory..................... PASS*	Device protection is set.
+Verifying memory....................... PASS*	Verify device fail at 0x00001
+Selecting FLASH........................ PASS 
+ **2.4.2** Erase Flash and SSB
+Erasing................................ PASS 
+Setting Address Range.................. PASS	0x00000	0x0dfff
+Blank checking......................... PASS	0x00000	0x0dfff
+Selecting Memory....................... PASS 
+ **2.4.3** Verify SSB = 0xFF
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0xFF
+Verifying memory....................... PASS	0x00001	0x00001
+Selecting FLASH........................ PASS 
+ **2.4.4** Flash 1byte; address 0x001 = 0x77
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0x77
+Programming memory..................... PASS	0x00001	0x00001
+Verifying memory....................... PASS	0x00001	0x00001
+Erasing................................ PASS 
+Selecting EEPROM....................... PASS 
+ **2.4.5** Eeprom 1byte; address 0x001 = 0x88
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0x88
+Programming memory..................... PASS	0x00001	0x00001
+Verifying memory....................... PASS	0x00001	0x00001
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+Selecting Memory....................... PASS 
+ **2.4.6** EB = 0x99
+Setting Address Range.................. PASS	0x00002	0x00002
+Filling buffer......................... PASS	0x00002	0x00002	0x99
+Programming memory..................... PASS	0x00002	0x00002
+Verifying memory....................... PASS	0x00002	0x00002
+Erasing................................ PASS 
+ ** 2 ** E.O.F
+ -3- Test=can64_tst-3_blankcheck_eeprom.txt
+Selecting EEPROM....................... PASS 
+ **3.1** Eeprom erase
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+ **3.2** Eeprom erase checking
+Blank checking......................... PASS	0x00000	0x007ff
+ **3.3.1** Eeprom 1byte; address 0x002 = 0x11
+Setting Address Range.................. PASS	0x00002	0x00002
+Filling buffer......................... PASS	0x00002	0x00002	0x11
+Programming memory..................... PASS	0x00002	0x00002
+Blank checking......................... PASS*	Blank check fail at 0x00002
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+Blank checking......................... PASS	0x00002	0x00002
+ **3.3.2** Eeprom 1byte; address 0x0FF = 0x22
+Setting Address Range.................. PASS	0x000ff	0x000ff
+Filling buffer......................... PASS	0x000ff	0x000ff	0x22
+Programming memory..................... PASS	0x000ff	0x000ff
+Blank checking......................... PASS*	Blank check fail at 0x000FF
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+Blank checking......................... PASS	0x000ff	0x000ff
+ **3.3.3** Eeprom 1byte; address 0x100 = 0x33
+Setting Address Range.................. PASS	0x00100	0x00100
+Filling buffer......................... PASS	0x00100	0x00100	0x33
+Programming memory..................... PASS	0x00100	0x00100
+Blank checking......................... PASS*	Blank check fail at 0x00100
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+Blank checking......................... PASS	0x00100	0x00100
+ **3.3.3** Eeprom 1byte; address 0x7FF = 0x44
+Setting Address Range.................. PASS	0x007ff	0x007ff
+Filling buffer......................... PASS	0x007ff	0x007ff	0x44
+Programming memory..................... PASS	0x007ff	0x007ff
+Blank checking......................... PASS*	Blank check fail at 0x007FF
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+Blank checking......................... PASS	0x007ff	0x007ff
+ ** 3 ** E.O.F
+ -4- Test=can64_tst-4_blankcheck_flash.txt
+Selecting FLASH........................ PASS 
+ **4.1** Flash erase
+Erasing................................ PASS 
+ **4.2** Flash erase checking
+Setting Address Range.................. PASS	0x00000	0x0dfff
+Blank checking......................... PASS	0x00000	0x0dfff
+ **4.3.1** Flash 1byte; address 0x0000 = 0x11
+Setting Address Range.................. PASS	0x00000	0x00000
+Filling buffer......................... PASS	0x00000	0x00000	0x11
+Programming memory..................... PASS	0x00000	0x00000
+Blank checking......................... PASS*	Blank check fail at 0x00000
+Erasing................................ PASS 
+Blank checking......................... PASS	0x00000	0x00000
+ **4.3.2** Flash 1byte; address 0x00FF = 0x22
+Setting Address Range.................. PASS	0x000ff	0x000ff
+Filling buffer......................... PASS	0x000ff	0x000ff	0x22
+Programming memory..................... PASS	0x000ff	0x000ff
+Blank checking......................... PASS*	Blank check fail at 0x000FF
+Erasing................................ PASS 
+Blank checking......................... PASS	0x000ff	0x000ff
+ **4.3.3** Flash 1byte; address 0x0100 = 0x33
+Setting Address Range.................. PASS	0x00100	0x00100
+Filling buffer......................... PASS	0x00100	0x00100	0x33
+Programming memory..................... PASS	0x00100	0x00100
+Blank checking......................... PASS*	Blank check fail at 0x00100
+Erasing................................ PASS 
+Blank checking......................... PASS	0x00100	0x00100
+ **4.3.4** Flash 1byte; address 0x4FFF = 0x44
+Setting Address Range.................. PASS	0x04fff	0x04fff
+Filling buffer......................... PASS	0x04fff	0x04fff	0x44
+Programming memory..................... PASS	0x04fff	0x04fff
+Blank checking......................... PASS*	Blank check fail at 0x04FFF
+Erasing................................ PASS 
+Blank checking......................... PASS	0x04fff	0x04fff
+ **4.3.5** Flash 1byte; address 0x5000 = 0x55
+Setting Address Range.................. PASS	0x05000	0x05000
+Filling buffer......................... PASS	0x05000	0x05000	0x55
+Programming memory..................... PASS	0x05000	0x05000
+Blank checking......................... PASS*	Blank check fail at 0x05000
+Erasing................................ PASS 
+Blank checking......................... PASS	0x05000	0x05000
+ **4.3.6** Flash 1byte; address 0x0DFFF = 0x66
+Setting Address Range.................. PASS	0x0dfff	0x0dfff
+Filling buffer......................... PASS	0x0dfff	0x0dfff	0x66
+Programming memory..................... PASS	0x0dfff	0x0dfff
+Blank checking......................... PASS*	Blank check fail at 0x0DFFF
+Erasing................................ PASS 
+Blank checking......................... PASS	0x0dfff	0x0dfff
+ ** 4 ** E.O.F
+ -5- Test=can64_tst-5_eeprom.txt
+Selecting EEPROM....................... PASS 
+ **5.1** Eeprom erase
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+ **5.2.1** Eeprom 1byte; address 0x000 = 0x11
+Setting Address Range.................. PASS	0x00000	0x00000
+Filling buffer......................... PASS	0x00000	0x00000	0x11
+Programming memory..................... PASS	0x00000	0x00000
+Verifying memory....................... PASS	0x00000	0x00000
+ **5.2.2** Eeprom blank checking; fail address = 0x000
+Setting Address Range.................. PASS	0x00000	0x007ff
+Blank checking......................... PASS*	Blank check fail at 0x00000
+ **5.2.3** Eeprom erase & blank checking
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+Blank checking......................... PASS	0x00000	0x007ff
+ **5.3** Eeprom 1byte; address 0x001 = 0x22
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0x22
+Programming memory..................... PASS	0x00001	0x00001
+Verifying memory....................... PASS	0x00001	0x00001
+ **5.4** Eeprom 1byte; address 0x002 = 0x33
+Setting Address Range.................. PASS	0x00002	0x00002
+Filling buffer......................... PASS	0x00002	0x00002	0x33
+Programming memory..................... PASS	0x00002	0x00002
+Verifying memory....................... PASS	0x00002	0x00002
+ **5.5** Eeprom 2Kbyte; address 0x000 up to 0x7FF = 0xAA
+Setting Address Range.................. PASS	0x00000	0x007ff
+Filling buffer......................... PASS	0x00000	0x007ff	0xAA
+Timeout set to 180sec.................. PASS 
+Programming memory.. PASS	0x00000	0x007ff
+Verifying memory....................... PASS	0x00000	0x007ff
+ **5.6** Eeprom erase
+Timeout set to 60sec................... PASS 
+Erasing................................ PASS 
+ ** 5 ** E.O.F
+ -6- Test=can64_tst-6_flash.txt
+Selecting FLASH........................ PASS 
+ **6.1** Flash erase
+Erasing................................ PASS 
+ **6.2.1** Flash 1byte; address 0x000 = 0x11
+Setting Address Range.................. PASS	0x00000	0x00000
+Filling buffer......................... PASS	0x00000	0x00000	0x11
+Programming memory..................... PASS	0x00000	0x00000
+Verifying memory....................... PASS	0x00000	0x00000
+ **6.2.2** Flash 1byte; address 0x001 = 0x22
+Setting Address Range.................. PASS	0x00001	0x00001
+Filling buffer......................... PASS	0x00001	0x00001	0x22
+Programming memory..................... PASS	0x00001	0x00001
+Verifying memory....................... PASS	0x00001	0x00001
+ **6.2.3** Flash 1byte; address 0x002 = 0x33
+Setting Address Range.................. PASS	0x00002	0x00002
+Filling buffer......................... PASS	0x00002	0x00002	0x33
+Programming memory..................... PASS	0x00002	0x00002
+Verifying memory....................... PASS	0x00002	0x00002
+ **6.2.4** Flash 1byte; address 0x0FE = 0x44
+Setting Address Range.................. PASS	0x000fe	0x000fe
+Filling buffer......................... PASS	0x000fe	0x000fe	0x44
+Programming memory..................... PASS	0x000fe	0x000fe
+Verifying memory....................... PASS	0x000fe	0x000fe
+ **6.2.5** Flash 1byte; address 0x0FF = 0x55
+Setting Address Range.................. PASS	0x000ff	0x000ff
+Filling buffer......................... PASS	0x000ff	0x000ff	0x55
+Programming memory..................... PASS	0x000ff	0x000ff
+Verifying memory....................... PASS	0x000ff	0x000ff
+ **6.2.6** Flash 1byte; address 0x0100 = 0x66
+Setting Address Range.................. PASS	0x00100	0x00100
+Filling buffer......................... PASS	0x00100	0x00100	0x66
+Programming memory..................... PASS	0x00100	0x00100
+Verifying memory....................... PASS	0x00100	0x00100
+ **6.3.1** Flash 3bytes; address 0x000-0x002 = 0x77
+Setting Address Range.................. PASS	0x00000	0x00002
+Filling buffer......................... PASS	0x00000	0x00002	0x77
+Programming memory..................... PASS	0x00000	0x00002
+Verifying memory....................... PASS	0x00000	0x00002
+ **6.3.2** Flash 3bytes; address 0x001-0x003 = 0x88
+Setting Address Range.................. PASS	0x00001	0x00003
+Filling buffer......................... PASS	0x00001	0x00003	0x88
+Programming memory..................... PASS	0x00001	0x00003
+Verifying memory....................... PASS	0x00001	0x00003
+ **6.3.3** Flash 3bytes; address 0x002-0x004 = 0x99
+Setting Address Range.................. PASS	0x00002	0x00004
+Filling buffer......................... PASS	0x00002	0x00004	0x99
+Programming memory..................... PASS	0x00002	0x00004
+Verifying memory....................... PASS	0x00002	0x00004
+ **6.3.4** Flash 3bytes; address 0x003-0x005 = 0xAA
+Setting Address Range.................. PASS	0x00003	0x00005
+Filling buffer......................... PASS	0x00003	0x00005	0xAA
+Programming memory..................... PASS	0x00003	0x00005
+Verifying memory....................... PASS	0x00003	0x00005
+ **6.3.5** Flash 3bytes; address 0x0FA-0x0FC = 0xBB
+Setting Address Range.................. PASS	0x000fa	0x000fc
+Filling buffer......................... PASS	0x000fa	0x000fc	0xBB
+Programming memory..................... PASS	0x000fa	0x000fc
+Verifying memory....................... PASS	0x000fa	0x000fc
+ **6.3.6** Flash 3bytes; address 0x0FB-0x0FD = 0xCC
+Setting Address Range.................. PASS	0x000fb	0x000fd
+Filling buffer......................... PASS	0x000fb	0x000fd	0xCC
+Programming memory..................... PASS	0x000fb	0x000fd
+Verifying memory....................... PASS	0x000fb	0x000fd
+ **6.3.7** Flash 3bytes; address 0x0FC-0x0FE = 0xDD
+Setting Address Range.................. PASS	0x000fc	0x000fe
+Filling buffer......................... PASS	0x000fc	0x000fe	0xDD
+Programming memory..................... PASS	0x000fc	0x000fe
+Verifying memory....................... PASS	0x000fc	0x000fe
+ **6.3.8** Flash 3bytes; address 0x0FD-0x0FF = 0xEE
+Setting Address Range.................. PASS	0x000fd	0x000ff
+Filling buffer......................... PASS	0x000fd	0x000ff	0xEE
+Programming memory..................... PASS	0x000fd	0x000ff
+Verifying memory....................... PASS	0x000fd	0x000ff
+ **6.3.9** Flash 3bytes; address 0x0FE-0x0100 = 0x00
+Setting Address Range.................. PASS	0x000fe	0x00100
+Filling buffer......................... PASS	0x000fe	0x00100	0x00
+Programming memory..................... PASS	0x000fe	0x00100
+Verifying memory....................... PASS	0x000fe	0x00100
+ **6.3.10** Flash 3bytes; address 0x0FF-0x0101 = 0x12
+Setting Address Range.................. PASS	0x000ff	0x00101
+Filling buffer......................... PASS	0x000ff	0x00101	0x12
+Programming memory..................... PASS	0x000ff	0x00101
+Verifying memory....................... PASS	0x000ff	0x00101
+ **6.3.11** Flash 3bytes; address 0x0100-0x0102 = 0x23
+Setting Address Range.................. PASS	0x00100	0x00102
+Filling buffer......................... PASS	0x00100	0x00102	0x23
+Programming memory..................... PASS	0x00100	0x00102
+Verifying memory....................... PASS	0x00100	0x00102
+ **6.4** Flash erase
+Erasing................................ PASS 
+ **6.5.1** Flash 16bytes; address 0x000-0x00F = 0x11
+Setting Address Range.................. PASS	0x00000	0x0000f
+Filling buffer......................... PASS	0x00000	0x0000f	0x11
+Programming memory..................... PASS	0x00000	0x0000f
+Verifying memory....................... PASS	0x00000	0x0000f
+ **6.5.2** Flash 16bytes; address 0x0FF-0x010E = 0x22
+Setting Address Range.................. PASS	0x000ff	0x0010e
+Filling buffer......................... PASS	0x000ff	0x0010e	0x22
+Programming memory..................... PASS	0x000ff	0x0010e
+Verifying memory....................... PASS	0x000ff	0x0010e
+ **6.5.3** Flash 16bytes; address 0x0100-0x010F = 0x33
+Setting Address Range.................. PASS	0x00100	0x0010f
+Filling buffer......................... PASS	0x00100	0x0010f	0x33
+Programming memory..................... PASS	0x00100	0x0010f
+Verifying memory....................... PASS	0x00100	0x0010f
+ **6.6** Flash erase
+Erasing................................ PASS 
+ **6.7.1** Flash 1page; address 0x000-0x0FF = 0x11
+Setting Address Range.................. PASS	0x00000	0x000ff
+Filling buffer......................... PASS	0x00000	0x000ff	0x11
+Programming memory..................... PASS	0x00000	0x000ff
+Verifying memory....................... PASS	0x00000	0x000ff
+ **6.7.2** Flash 1page; address 0x080-0x017F = 0x12
+Setting Address Range.................. PASS	0x00080	0x0017f
+Filling buffer......................... PASS	0x00080	0x0017f	0x12
+Programming memory..................... PASS	0x00080	0x0017f
+Verifying memory....................... PASS	0x00080	0x0017f
+ **6.7.3** Flash 1page-1; address 0x001-0x0FF = 0x22
+Setting Address Range.................. PASS	0x00001	0x000ff
+Filling buffer......................... PASS	0x00001	0x000ff	0x22
+Programming memory..................... PASS	0x00001	0x000ff
+Verifying memory....................... PASS	0x00001	0x000ff
+ **6.7.4** Flash 1page-1; address 0x000-0x0FE = 0xAA
+Setting Address Range.................. PASS	0x00000	0x000fe
+Filling buffer......................... PASS	0x00000	0x000fe	0xAA
+Programming memory..................... PASS	0x00000	0x000fe
+Verifying memory....................... PASS	0x00000	0x000fe
+ **6.7.5** Flash 1page-2; address 0x002-0x0FF = 0x33
+Setting Address Range.................. PASS	0x00002	0x000ff
+Filling buffer......................... PASS	0x00002	0x000ff	0x33
+Programming memory..................... PASS	0x00002	0x000ff
+Verifying memory....................... PASS	0x00002	0x000ff
+ **6.7.6** Flash 1page-2; address 0x000-0x0FD = 0xBB
+Setting Address Range.................. PASS	0x00000	0x000fd
+Filling buffer......................... PASS	0x00000	0x000fd	0xBB
+Programming memory..................... PASS	0x00000	0x000fd
+Verifying memory....................... PASS	0x00000	0x000fd
+ **6.7.7** Flash 1page-3; address 0x003-0x0FF = 0x44
+Setting Address Range.................. PASS	0x00003	0x000ff
+Filling buffer......................... PASS	0x00003	0x000ff	0x44
+Programming memory..................... PASS	0x00003	0x000ff
+Verifying memory....................... PASS	0x00003	0x000ff
+ **6.7.8** Flash 1page-3; address 0x000-0x0FC = 0xCC
+Setting Address Range.................. PASS	0x00000	0x000fc
+Filling buffer......................... PASS	0x00000	0x000fc	0xCC
+Programming memory..................... PASS	0x00000	0x000fc
+Verifying memory....................... PASS	0x00000	0x000fc
+ **6.7.9** Flash 1page+1; address 0x000-0x0100 = 0x01
+Setting Address Range.................. PASS	0x00000	0x00100
+Filling buffer......................... PASS	0x00000	0x00100	0x01
+Programming memory..................... PASS	0x00000	0x00100
+Verifying memory....................... PASS	0x00000	0x00100
+ **6.7.10** Flash 1page+2; address 0x000-0x0101 = 0x23
+Setting Address Range.................. PASS	0x00000	0x00101
+Filling buffer......................... PASS	0x00000	0x00101	0x23
+Programming memory..................... PASS	0x00000	0x00101
+Verifying memory....................... PASS	0x00000	0x00101
+ **6.7.11** Flash 1page+3; address 0x000-0x0102 = 0x45
+Setting Address Range.................. PASS	0x00000	0x00102
+Filling buffer......................... PASS	0x00000	0x00102	0x45
+Programming memory..................... PASS	0x00000	0x00102
+Verifying memory....................... PASS	0x00000	0x00102
+ **6.7.12** Flash 1page+1; address 0x001-0x0100 = 0xAB
+Setting Address Range.................. PASS	0x00001	0x00100
+Filling buffer......................... PASS	0x00001	0x00100	0xAB
+Programming memory..................... PASS	0x00001	0x00100
+Verifying memory....................... PASS	0x00001	0x00100
+ **6.7.13** Flash 1page+2; address 0x001-0x0101 = 0xCD
+Setting Address Range.................. PASS	0x00001	0x00101
+Filling buffer......................... PASS	0x00001	0x00101	0xCD
+Programming memory..................... PASS	0x00001	0x00101
+Verifying memory....................... PASS	0x00001	0x00101
+ **6.7.13** Flash 1page+3; address 0x001-0x0102 = 0xEF
+Setting Address Range.................. PASS	0x00001	0x00102
+Filling buffer......................... PASS	0x00001	0x00102	0xEF
+Programming memory..................... PASS	0x00001	0x00102
+Verifying memory....................... PASS	0x00001	0x00102
+ **6.8** Flash 56kbytes; address 0x000-0x0DFFF = 0xAA
+Setting Address Range.................. PASS	0x00000	0x0dfff
+Filling buffer......................... PASS	0x00000	0x0dfff	0xAA
+Programming memory.. PASS	0x00000	0x0dfff
+Verifying memory........ PASS	0x00000	0x0dfff
+ **6.9** Flash erase
+Erasing................................ PASS 
+ ** 6 ** E.O.F
+Closing CAN Node....................... PASS	0xFF
+ 
+ --- End of Test--- 
+
+Summary:  Total 474   Passed 474   Failed 0
