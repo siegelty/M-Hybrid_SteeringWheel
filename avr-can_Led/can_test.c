@@ -29,6 +29,26 @@
 
 #define MY_ID_TAG   0x69
 
+char down[8];
+
+void send_val(U8 data);
+
+ISR(INT0_vect) {
+    if (!down[0]) {
+        send_val(0x9);
+        down[0] = 1;
+    } else {
+        down[0] = 0;
+    }
+    
+}
+
+void initInterrupt0(void) {
+    EIMSK |= (1 << INT0);
+    EICRA |= (1 << ISC00);
+    sei();
+}
+
 void send_val(U8 data) {
     st_cmd_t toSend;
 
@@ -43,11 +63,15 @@ void send_val(U8 data) {
 
 
 int main() {
+    PORTD |= (1 << PD0);
+    DDRD = 0x00;
+    initInterrupt0();
+
+
     can_init(0x0);
     
+
     while(1) {
-        send_val(0x9);
-        for (int i = 0; i < 10000; ++i);
     }
     return 0;
 }

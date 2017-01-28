@@ -25,7 +25,7 @@
 
 //_____ I N C L U D E S ________________________________________________________
 
-#include "config.h"
+#include "../can/config.h"
 
 //_____ G E N E R A L    D E F I N I T I O N S _________________________________
 
