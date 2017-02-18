@@ -30,28 +30,32 @@
 
 #define MY_ID_TAG   0x69
 
-char state;
+char state = 0x00;
 
 void send_val(U8 data);
 
-void updateState(char* state, U8 PinFam, int pin) {
-    *state = (*state & ~(1 << pin)) | (~(PinFam & (1 << pin)) << pin);
+void updateState(int pin, int toSet) {
+    if (toSet) {
+        state |= (1 << pin);
+    } else {
+        state &= ~(1 << pin);
+    }
 }
 
 ISR(INT0_vect) {
-    updateState(&state, PIND, 0); // Update state of the pin 0 based on PIND
+    updateState(0, ~(PIND & (1 << 0))); // Update state of the pin 0 based on PIND
     send_val(state); // Send new value of state
     
 }
 
 ISR(INT1_vect) {
-    updateState(&state, PIND, 1); // Update state of the pin 0 based on PIND
+    updateState(1, ~(PIND & (1 << 1))); // Update state of the pin 0 based on PIND
     send_val(state); // Send new value of state
     
 }
 
 ISR(INT2_vect) {
-    updateState(&state, PIND, 2); // Update state of the pin 0 based on PIND
+    updateState(2, ~(PIND & (1 << 2))); // Update state of the pin 0 based on PIND
     send_val(state); // Send new value of state
     
 }
@@ -62,7 +66,7 @@ void initInterrupt0(void) {
 }
 
 void initInterrupt1(void) {
-    EIMSK |= (1 << INT2);
+    EIMSK |= (1 << INT1);
     EICRA |= (1 << ISC10);
 }
 
