@@ -1,5 +1,6 @@
 #include "libraries/lib_mcu/can/config.h"
 #include "libraries/lib_mcu/can/can_lib.h"
+// #include <util/delay.h>
 
 
 // //_____ I N C L U D E S ________________________________________________________
@@ -30,16 +31,19 @@
 #define MY_ID_TAG   0x69
 
 char down[8];
+U8 can_count;
 
 void send_val(U8 data);
 
 ISR(INT0_vect) {
     if (!down[0]) {
-        send_val(0x9);
+        send_val(can_count);
+        can_count = (can_count + 1) % 16;
         down[0] = 1;
     } else {
         down[0] = 0;
     }
+
     
 }
 
@@ -72,6 +76,7 @@ int main() {
     
 
     while(1) {
+        // sleep();// _delay_ms(200);
     }
     return 0;
 }

@@ -7,11 +7,16 @@ USB=tty.usbserial-A902ZULV
 # Change for output file
 OUTPUT=wheel.hex
 
+default: flash
+
 build: $(TARGET)
 	avr-gcc -mmcu=at90can128 -g $(TARGET) -o $(OUTPUT)
 
 load: $(OUTPUT)
 	avrdude -p c128 -P /dev/$(USB) -c jtag1 -U flash:w:$(OUTPUT) 
+
+flash: build load
+
 
 ## Clean target
 .PHONY: clean
