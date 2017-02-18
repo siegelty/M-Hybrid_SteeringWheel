@@ -30,27 +30,45 @@
 
 #define MY_ID_TAG   0x69
 
-char down[8];
-U8 can_count;
+char state;
 
 void send_val(U8 data);
 
-ISR(INT0_vect) {
-    if (!down[0]) {
-        send_val(can_count);
-        can_count = (can_count + 1) % 16;
-        down[0] = 1;
-    } else {
-        down[0] = 0;
-    }
+void updateState(char* state, U8 PinFam, int pin) {
+    *state = (*state & ~(1 << pin)) | (~(PinFam & (1 << pin)) << pin);
+}
 
+ISR(INT0_vect) {
+    updateState(&state, PIND, 0); // Update state of the pin 0 based on PIND
+    send_val(state); // Send new value of state
+    
+}
+
+ISR(INT1_vect) {
+    updateState(&state, PIND, 1); // Update state of the pin 0 based on PIND
+    send_val(state); // Send new value of state
+    
+}
+
+ISR(INT2_vect) {
+    updateState(&state, PIND, 2); // Update state of the pin 0 based on PIND
+    send_val(state); // Send new value of state
     
 }
 
 void initInterrupt0(void) {
     EIMSK |= (1 << INT0);
     EICRA |= (1 << ISC00);
-    sei();
+}
+
+void initInterrupt1(void) {
+    EIMSK |= (1 << INT2);
+    EICRA |= (1 << ISC10);
+}
+
+void initInterrupt2(void) {
+    EIMSK |= (1 << INT2);
+    EICRA |= (1 << ISC20);
 }
 
 void send_val(U8 data) {
@@ -67,16 +85,22 @@ void send_val(U8 data) {
 
 
 int main() {
-    PORTD |= (1 << PD0);
-    DDRD = 0x00;
+    PORTD |= (1 << PD2);
+    DDRD &= ~(1 << DDD2);
     initInterrupt0();
+    initInterrupt1();
+    initInterrupt2();
+
+
+    sei();
+
 
 
     can_init(0x0);
     
 
     while(1) {
-        // sleep();// _delay_ms(200);
+      
     }
     return 0;
 }
