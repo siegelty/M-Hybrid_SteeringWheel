@@ -26,3 +26,6 @@
 6. To build, run "make build" 
 7. Once you've build, run "make load" to flash the code to the board
 8. You can also build in flash with the default make (just type "make") or make flash. 
+
+### Useful Links
+1. http://www.protostack.com/blog/2010/09/external-interrupts-on-an-atmega168/

@@ -1,5 +1,6 @@
 #include "libraries/lib_mcu/can/config.h"
 #include "libraries/lib_mcu/can/can_lib.h"
+// #include <util/delay.h>
 
 
 // //_____ I N C L U D E S ________________________________________________________
@@ -29,17 +30,33 @@
 
 #define MY_ID_TAG   0x69
 
-char down[8];
+char state = 0x00;
 
 void send_val(U8 data);
 
-ISR(INT0_vect) {
-    if (!down[0]) {
-        send_val(0x9);
-        down[0] = 1;
+void updateState(int pin, int toSet) {
+    if (toSet) {
+        state |= (1 << pin);
     } else {
-        down[0] = 0;
+        state &= ~(1 << pin);
     }
+}
+
+ISR(INT0_vect) {
+    updateState(0, ~(PIND & (1 << 0))); // Update state of the pin 0 based on PIND
+    send_val(state); // Send new value of state
+    
+}
+
+ISR(INT1_vect) {
+    updateState(1, ~(PIND & (1 << 1))); // Update state of the pin 0 based on PIND
+    send_val(state); // Send new value of state
+    
+}
+
+ISR(INT2_vect) {
+    updateState(2, ~(PIND & (1 << 2))); // Update state of the pin 0 based on PIND
+    send_val(state); // Send new value of state
     
 }
 
@@ -47,6 +64,16 @@ void initInterrupt0(void) {
     EIMSK |= (1 << INT0); //Enable Interupt Mask //setting it to the pin to 
     EICRA |= (1 << ISC00); //Trigring it to falling edge 
     sei();
+}
+
+void initInterrupt1(void) {
+    EIMSK |= (1 << INT1);
+    EICRA |= (1 << ISC10);
+}
+
+void initInterrupt2(void) {
+    EIMSK |= (1 << INT2);
+    EICRA |= (1 << ISC20);
 }
 
 void send_val(U8 data) {
@@ -63,15 +90,22 @@ void send_val(U8 data) {
 
 
 int main() {
-    PORTD |= (1 << PD0); // Setting it Pin to pull up
-    DDRD = 0x00; //Sets to output
+    PORTD |= (1 << PD2);// Setting it Pin to pull up
+    DDRD &= ~(1 << DDD2);//Sets to output
     initInterrupt0();
+    initInterrupt1();
+    initInterrupt2();
+
+
+    sei();
+
 
 
     can_init(0x0);
     
 
     while(1) {
+      
     }
     return 0;
 }
