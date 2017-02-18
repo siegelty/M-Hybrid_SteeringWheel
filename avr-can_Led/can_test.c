@@ -44,8 +44,8 @@ ISR(INT0_vect) {
 }
 
 void initInterrupt0(void) {
-    EIMSK |= (1 << INT0);
-    EICRA |= (1 << ISC00);
+    EIMSK |= (1 << INT0); //Enable Interupt Mask //setting it to the pin to 
+    EICRA |= (1 << ISC00); //Trigring it to falling edge 
     sei();
 }
 
@@ -63,8 +63,8 @@ void send_val(U8 data) {
 
 
 int main() {
-    PORTD |= (1 << PD0);
-    DDRD = 0x00;
+    PORTD |= (1 << PD0); // Setting it Pin to pull up
+    DDRD = 0x00; //Sets to output
     initInterrupt0();
 
 
