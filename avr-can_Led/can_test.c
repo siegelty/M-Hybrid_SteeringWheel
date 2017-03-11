@@ -91,7 +91,7 @@ void send_val(U8 data) {
 
 int main() {
     PORTD |= (1 << PD2);// Setting it Pin to pull up
-    DDRD &= ~(1 << DDD2);//Sets to output
+    DDRD &= ~(1 << DDD2);//Sets to input
     initInterrupt0();
     initInterrupt1();
     initInterrupt2();
